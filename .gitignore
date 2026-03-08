@@ -8,3 +8,6 @@ dist/
 coverage/
 .fumadocs/
 .source/
+.claude/stack.yml
+
+.env
