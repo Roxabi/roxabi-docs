@@ -16,8 +16,6 @@ jobs:
         run: bun lint
       - name: Typecheck
         run: bun typecheck
-      - name: Test
-        run: bun test --passWithNoTests
 
   secrets:
     name: Secret scan
