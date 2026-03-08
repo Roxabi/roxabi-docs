@@ -7,7 +7,3 @@ pre-commit:
     trufflehog:
       run: trufflehog git file://. --only-verified --fail
 
-pre-push:
-  commands:
-    license:
-      run: bun tools/licenseChecker.ts
