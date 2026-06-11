@@ -39,8 +39,8 @@ jobs:
         with:
           app-id: ${{ vars.ROXABI_CI_APP_ID }}
           private-key: ${{ secrets.ROXABI_CI_APP_PRIVATE_KEY }}
-      - name: Enable auto-merge (squash)
-        run: gh pr merge "$PR_NUMBER" --auto --squash --repo "$GITHUB_REPOSITORY"
+      - name: Enable auto-merge (merge commit)
+        run: gh pr merge "$PR_NUMBER" --auto --merge --repo "$GITHUB_REPOSITORY"
         env:
           GH_TOKEN: ${{ steps.app.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
