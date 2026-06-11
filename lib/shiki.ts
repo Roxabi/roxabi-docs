@@ -1,5 +1,5 @@
-import { defineShikiConfig } from 'fumadocs-core/highlight/config'
-import type { createBundledHighlighter as CreateBundledHighlighterFn } from 'shiki/core'
+import { createShikiFactory } from 'fumadocs-core/highlight/shiki'
+import type { createBundledHighlighter as CreateBundledHighlighterFn, HighlighterCore } from 'shiki/core'
 
 /**
  * Custom Shiki config that uses a mini bundled highlighter instead of the full
@@ -65,15 +65,9 @@ async function getCreateHighlighter() {
   })
 }
 
-export const shikiConfig = defineShikiConfig({
-  defaultThemes: {
-    themes: {
-      light: 'github-light',
-      dark: 'github-dark',
-    },
-  },
-  async createHighlighter() {
+export const shikiFactory = createShikiFactory({
+  async init() {
     const createHighlighter = await getCreateHighlighter()
-    return createHighlighter({ langs: [], themes: [] })
+    return createHighlighter({ langs: [], themes: [] }) as unknown as HighlighterCore
   },
 })
